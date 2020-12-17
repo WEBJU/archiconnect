@@ -61,7 +61,7 @@
                   <td><?php echo $description ?></td>
                   <td><?php echo $starting_date ?></td>
                   <td><?php echo $expected_completion ?></td>
-                  <td><a class="btn btn-primary" href="#">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
+                  <td><button class="btn btn-primary" id="<?php echo $id ?>">Edit</button> <button class="btn btn-danger" id="<?php echo $id ?>">Delete</button></td>
                 </tr>
               <?php endwhile; ?>
               <?php else: ?>
@@ -79,5 +79,76 @@
 
 
   </main><!-- End #main -->
-
+    <!-- Modal update user details -->
+    <div class="modal fade" id="update_client_specifications" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="close" name="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="modalLabel">Update Client Specifications</h4>
+            <div class="modal-body">
+              <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])  ?>" method="post">
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="">Building Type</label>
+                    <select name="building_type" class="form-control">
+                      <option>Commercial</option>
+                      <option>Residential</option>
+                      <option>Business</option>
+                      <option>Educational</option>
+                    </select>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="">Building Location</label>
+                      <input type="text" name="location" class="form-control" placeholder="Location">
+                      <div class="validate"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="">Your Budget</label>
+                      <input name="budget" type="text" class="form-control" placeholder="Budget">
+                      <div class="validate"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="">Expected start date</label>
+                      <input type="date" name="starting_date" class="form-control">
+                      <div class="validate"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="">Expected end date</label>
+                      <input type="date" name="expected_completion" class="form-control">
+                      <div class="validate"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="">Description</label>
+                      <textarea name="description" class="form-control" cols="45" rows="5" placeholder="Description your building more"></textarea>
+                      <div class="validate"></div>
+                    </div>
+                  </div>
+                  <!-- <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-info btn-block">Update</button>
+                  </div> -->
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" name="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" name="button" class="btn btn-primary" data-dismiss="modal">Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <?php include('./include/footer.php') ?>

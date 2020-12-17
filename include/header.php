@@ -11,9 +11,13 @@ $db=$database->getConnection();
  $clients=new Clients($db);
  // $user_id= $_SESSION['user_id'];
  // $user_details=$users->userDetails($_SESSION['user_id']);
+ if (isset($_SESSION['user_id'])) {
  $user_id=$_SESSION['user_id'];
  $user_details=$users->userDetails($user_id);
- $user_role=$user_details->role; ?>
+ $user_role=$user_details->role;
+ }
+
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -145,7 +149,7 @@ $db=$database->getConnection();
           <?php else: ?>
             <?php if($user_role == 'Architect'): ?>
               <li class="nav-item">
-                <a class="nav-link" href="portfolio.php">My Portfolio</a>
+                <a class="nav-link" href="my_portfolio.php">My Portfolio</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="sample_design.php">My Designs</a>

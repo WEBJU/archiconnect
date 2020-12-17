@@ -43,7 +43,7 @@
             $clients->description=$_POST['description'];
             $clients->starting_date=$_POST['starting_date'];
             $clients->expected_completion=$_POST['expected_completion'];
-
+            var_dump($clients->addSpecification()).exit();
             if ($clients->addSpecification()) {
                   echo "<div class='alert alert-success'>New specifications added successfully!!</div>";
           }else {

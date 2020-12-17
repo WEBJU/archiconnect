@@ -82,6 +82,53 @@ class Architects
       return false;
     }
   }
+
+  function viewPortfolio($user_id){
+   try {
+       $query="SELECT * FROM architect_portfolio WHERE user_id=:user_id";
+       $stmt=$this->conn->prepare($query);
+       $stmt->bindParam(":user_id",$user_id);
+       $stmt->execute();
+       return $stmt;
+
+   }catch (\Exception $e) {
+     exit($e->getMessage());
+   }
+
+ }
+
+ function viewDesigns($user_id){
+  try {
+      $query="SELECT * FROM sample_designs WHERE user_id=:user_id";
+      $stmt=$this->conn->prepare($query);
+      $stmt->bindParam(":user_id",$user_id);
+      $stmt->execute();
+      return $stmt;
+
+  }catch (\Exception $e) {
+    exit($e->getMessage());
+  }
+ }
+
+public function deletePortfolio($id){
+    try {
+      $query = $this->db->prepare("DELETE FROM architect_portfolio WHERE id = :id");
+      $query->bindParam("id", $id, PDO::PARAM_STR);
+      $query->execute();
+    } catch (\Exception $e) {
+
+    }
+  }
+  public function deleteSampleDesign($id){
+      try {
+        $query = $this->db->prepare("DELETE FROM sample_designs WHERE id = :id");
+        $query->bindParam("id", $id, PDO::PARAM_STR);
+        $query->execute();
+      } catch (\Exception $e) {
+
+      }
+    }
+
 }
 
 
